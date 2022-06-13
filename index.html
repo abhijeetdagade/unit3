@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home page</title>
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    background-color: rgb(248, 246, 246);
+  }
+  /* Navbar related css */
+  
+  #navbar {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1%;
+    box-shadow: 2px 2px 5px 5px rgb(235, 235, 235);
+  }
+  
+  #navbar > div {
+    display: flex;
+    list-style: none;
+  }
+  #navbar a {
+    text-decoration: none;
+    color: teal;
+    font-size: 30px;
+  }
+  #submit {
+    width: 70%;
+    margin: auto;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 15px;
+  }
+  /* Navbar related css */
+  
+  /* Form related css */
+  
+  input,
+  select {
+    display: block;
+    margin: 15px 0px;
+    font-size: 20px;
+    padding: 2%;
+  }
+  option {
+    font-size: 25px;
+  }
+  user-form {
+    width: 400px;
+    border: 1px solid rgb(230, 230, 230);
+    margin: 3% auto;
+    padding: 3%;
+    background: white;
+  }
+  /* Form related css */
+  
+    </style>
+  </head>
+  <body>
+    <div id="navbar">
+      <h3>News App</h3>
+      <h3>Sign-Up</h3>
+      <h3>
+        <a href="/worldNews.html">World News</a>
+      </h3>
+    </div>
+  
+      <!-- Profile Pic, (Id:- user_pic)
+Name, (Id:- user_name)
+Email, (Id:- user_email)
+country, (Id: user_country) >> Dropdown with options "India", "China", "Newzeland", "USA", "UK.  
+** Submit button will have Id:- "submit". -->
+<form id="form">
+<input placeholder="prfile pic url" id="user_image" type="text" />
+<input placeholder="Enter Name" id="user_name" type="text" />
+<input placeholder="Enter email" type="email" id="user_email" />
+<select name="country" id="user_country">
+  <option value="in">India</option>
+  <option value="us">usa</option>
+  <option value="ch">china</option>
+  <option value="uk">UK</option>
+  <option value="nz">New zeland</option>
+</select>
+<input id="submit" type="submit" value="Submit" />
+  </form>
+  </body>
+</html>
+<script>
+   document.querySelector("#form").addEventListener("submit", jobSubmit);
+    var jobArr = JSON.parse(localStorage.getItem("user")) || [];
+
+    function jobSubmit() {
+      event.preventDefault();
+
+      // formId.inputId.value
+
+      var jobObj = {
+        personurl:form.user_image.value,
+        personName:form.user_name.value,
+        personEmail:form.user_email.value,
+        personCountray:form.user_country.value,
+      };
+      jobArr.push(jobObj);
+      console.log(jobArr);
+      localStorage.setItem("user", JSON.stringify(jobArr));
+      // redirect to applied jobs
+      window.location.href = "news.html";
+    }
+
+</script>
